@@ -1,19 +1,15 @@
 ﻿{
   "version": "1.0.0",
   "restore": {
-    "projectUniqueName": "C:\\Projects\\C#\\EmploymentAgency\\EmpAge\\EmpAge.csproj",
+    "projectUniqueName": "/home/arseniy/sharp/empage/EmpAge/EmpAge.csproj",
     "projectName": "EmpAge",
-    "projectPath": "C:\\Projects\\C#\\EmploymentAgency\\EmpAge\\EmpAge.csproj",
-    "outputPath": "C:\\Projects\\C#\\EmploymentAgency\\EmpAge\\obj\\",
+    "projectPath": "/home/arseniy/sharp/empage/EmpAge/EmpAge.csproj",
+    "outputPath": "/home/arseniy/sharp/empage/EmpAge/obj/",
     "projectStyle": "PackageReference",
-    "fallbackFolders": [
-      "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-    ],
     "originalTargetFrameworks": [
       "netcoreapp3.0"
     ],
     "sources": {
-      "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
       "https://api.nuget.org/v3/index.json": {}
     },
     "frameworks": {

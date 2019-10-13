@@ -1,30 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Projects\\C#\\EmploymentAgency\\EmpAge\\EmpAge.csproj": {}
+    "/home/arseniy/sharp/empage/EmpAge/EmpAge.csproj": {}
   },
   "projects": {
-    "C:\\Projects\\C#\\EmploymentAgency\\EmpAge\\EmpAge.csproj": {
+    "/home/arseniy/sharp/empage/EmpAge/EmpAge.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Projects\\C#\\EmploymentAgency\\EmpAge\\EmpAge.csproj",
+        "projectUniqueName": "/home/arseniy/sharp/empage/EmpAge/EmpAge.csproj",
         "projectName": "EmpAge",
-        "projectPath": "C:\\Projects\\C#\\EmploymentAgency\\EmpAge\\EmpAge.csproj",
-        "packagesPath": "C:\\Users\\Arsen\\.nuget\\packages\\",
-        "outputPath": "C:\\Projects\\C#\\EmploymentAgency\\EmpAge\\obj\\",
+        "projectPath": "/home/arseniy/sharp/empage/EmpAge/EmpAge.csproj",
+        "packagesPath": "/home/arseniy/.nuget/packages/",
+        "outputPath": "/home/arseniy/sharp/empage/EmpAge/obj/",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Arsen\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/home/arseniy/.config/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
