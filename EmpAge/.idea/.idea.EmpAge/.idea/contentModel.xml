@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
     <e p="C:\Projects\C#\EmploymentAgency\EmpAge" t="IncludeRecursive">
@@ -6,12 +6,15 @@
       <e p="appsettings.json" t="Include" />
       <e p="bin" t="ExcludeRecursive" />
       <e p="Controllers" t="Include">
+        <e p="AccountController.cs" t="Include" />
         <e p="HomeController.cs" t="Include" />
       </e>
       <e p="EmpAge.csproj" t="IncludeRecursive" />
       <e p="EmpAge.sln" t="IncludeFlat" />
       <e p="Models" t="Include">
         <e p="ErrorViewModel.cs" t="Include" />
+        <e p="User.cs" t="Include" />
+        <e p="UsersContext.cs" t="Include" />
       </e>
       <e p="obj" t="ExcludeRecursive">
         <e p="Debug" t="Include">
@@ -26,9 +29,17 @@
         <e p="launchSettings.json" t="Include" />
       </e>
       <e p="Startup.cs" t="Include" />
+      <e p="ViewModels" t="Include">
+        <e p="LoginModel.cs" t="Include" />
+        <e p="RegisterModel.cs" t="Include" />
+      </e>
       <e p="Views" t="Include">
         <e p="_ViewImports.cshtml" t="Include" />
         <e p="_ViewStart.cshtml" t="Include" />
+        <e p="Account" t="Include">
+          <e p="Login.cshtml" t="Include" />
+          <e p="Register.cshtml" t="Include" />
+        </e>
         <e p="Home" t="Include">
           <e p="Index.cshtml" t="Include" />
           <e p="Privacy.cshtml" t="Include" />

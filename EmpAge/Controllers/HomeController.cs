@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using EmpAge.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace EmpAge.Controllers
 {
@@ -17,10 +18,11 @@ namespace EmpAge.Controllers
         {
             _logger = logger;
         }
-
+        
+        [Authorize]
         public IActionResult Index()
         {
-            return View();
+            return Content(User.Identity.Name);
         }
 
         public IActionResult Privacy()
