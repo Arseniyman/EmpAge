@@ -1,0 +1,39 @@
+﻿@model EmpAge.ViewModels.RegisterViewModel
+@{
+    ViewData["Title"] = "Регистрация";
+    IEnumerable<SelectListItem> roles = new List<SelectListItem> {
+        new SelectListItem {Value = "Соискатель", Text = "Соискатель" },
+        new SelectListItem {Value = "Работодатель", Text = "Работодатель",  }
+    };
+}
+<div class="container">
+    <div class="col-md-4">
+        <h2>Регистрация нового пользователя</h2>
+        <form method="post" asp-controller="Account" asp-action="Register">
+            <div asp-validation-summary="ModelOnly"></div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label><br />
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Password" class="control-label"></label><br />
+                <input asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PasswordConfirm" class="control-label"></label><br />
+                <input asp-for="PasswordConfirm" class="form-control" />
+                <span asp-validation-for="PasswordConfirm" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RoleName" class="control-label"></label><br />
+                <select asp-for="RoleName" asp-items="roles" class="form-control"></select>
+                <span asp-validation-for="RoleName" class="text-danger"></span>
+            </div>
+            <div>
+                <input type="submit" class="btn btn-primary" value="Регистрация" />
+            </div>
+        </form>
+    </div>
+</div>

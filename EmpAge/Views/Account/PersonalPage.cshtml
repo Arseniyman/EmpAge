@@ -1,0 +1,23 @@
+﻿@{
+    ViewData["Title"] = "Личный кабинет";
+}
+
+@if (User.IsInRole("applicant"))
+{
+    <h1>Личный кабинет соискателя</h1>
+    @await Html.PartialAsync("ApplicantPartial")
+}
+@if (User.IsInRole("employer"))
+{
+    <h1>Личный кабинет работодателя</h1>
+}
+@if (User.IsInRole("admin"))
+{
+    <h1>Личный кабинет администратора</h1>
+
+    @await Html.PartialAsync("AdminPartial");
+}
+@if (User.IsInRole("moder"))
+{
+    <h1>Личный кабинет модератора</h1>
+}
