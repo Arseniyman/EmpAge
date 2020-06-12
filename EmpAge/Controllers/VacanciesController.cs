@@ -6,28 +6,28 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using EmpAge.Models;
+using Microsoft.AspNetCore.Identity;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
 
 namespace EmpAge.Controllers
 {
-    public class SummariesController : Controller
+    public class VacanciesController : Controller
     {
         private readonly AppDBContext _context;
         private readonly UserManager<IdentityUser> _userManager;
 
-        public SummariesController(AppDBContext context,
+        public VacanciesController(AppDBContext context,
             UserManager<IdentityUser> userManager)
         {
             _context = context;
             _userManager = userManager;
         }
 
-        // GET: Summaries
+        // GET: Vacancies
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Summaries.ToListAsync());
+            return View(await _context.Vacancies.ToListAsync());
         }
 
         public async Task<IActionResult> Details(int? id)
@@ -37,17 +37,17 @@ namespace EmpAge.Controllers
                 return NotFound();
             }
 
-            var summary = await _context.Summaries
+            var vacancy = await _context.Vacancies
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (summary == null)
+            if (vacancy == null)
             {
                 return NotFound();
             }
 
-            return View(summary);
+            return View(vacancy);
         }
 
-        [Authorize(Roles = "applicant")]
+        [Authorize(Roles = "employer")]
         public IActionResult Create()
         {
             return View();
@@ -55,20 +55,20 @@ namespace EmpAge.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "applicant")]
-        public async Task<IActionResult> Create([Bind("Id,Name,Phone,Salary,Location,Education,EmploymType,Description,ApplicantId")] Summary summary)
+        [Authorize(Roles = "employer")]
+        public async Task<IActionResult> Create([Bind("Id,Name,Phone,Salary,Location,EmploymentType,JobSector,Description,EmployerId")] Vacancy vacancy)
         {
-            summary.ApplicantId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            vacancy.EmployerId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             if (ModelState.IsValid)
             {
-                _context.Add(summary);
+                _context.Add(vacancy);
                 await _context.SaveChangesAsync();
                 return RedirectToAction("PersonalPage", "Account");
             }
-            return View(summary);
+            return View(vacancy);
         }
 
-        [Authorize(Roles = "applicant")]
+        [Authorize(Roles = "employer")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -76,38 +76,38 @@ namespace EmpAge.Controllers
                 return NotFound();
             }
 
-            var summary = await _context.Summaries.FindAsync(id);
-            if (summary == null)
+            var vacancy = await _context.Vacancies.FindAsync(id);
+            if (vacancy == null)
             {
                 return NotFound();
             }
-            return View(summary);
+            return View(vacancy);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "applicant")]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Phone,Salary,Location,Education,EmploymType,Description,ApplicantId")] Summary summary)
+        [Authorize(Roles = "employer")]
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Phone,Salary,Location,EmploymentType,JobSector,Description,EmployerId")] Vacancy vacancy)
         {
-            var preSummary = await _context.Summaries.FindAsync(id);
+            var preVacancy = await _context.Vacancies.FindAsync(id);
             string currentUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            
-            if (id != summary.Id)
+
+            if (id != vacancy.Id)
             {
                 return NotFound();
             }
 
-            if (ModelState.IsValid && preSummary.ApplicantId == currentUserId)
+            if (ModelState.IsValid && preVacancy.EmployerId == currentUserId)
             {
                 try
                 {
-                    summary.ApplicantId = currentUserId;
-                    _context.Update(summary);
+                    vacancy.EmployerId = currentUserId;
+                    _context.Update(vacancy);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!SummaryExists(summary.Id))
+                    if (!VacancyExists(vacancy.Id))
                     {
                         return NotFound();
                     }
@@ -118,31 +118,30 @@ namespace EmpAge.Controllers
                 }
                 return RedirectToAction("PersonalPage", "Account");
             }
-            return View(summary);
+            return View(vacancy);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "applicant, moder")]
+        [Authorize(Roles = "employer, moder")]
         public async Task<IActionResult> Delete(int id)
         {
-            var summary = await _context.Summaries.FindAsync(id);
+            var vacancy = await _context.Vacancies.FindAsync(id);
             string currentUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             IdentityUser currentUser = await _userManager.FindByIdAsync(currentUserId);
 
-            if (summary.ApplicantId == currentUserId || 
+            if(vacancy.EmployerId == currentUserId ||
                 await _userManager.IsInRoleAsync(currentUser, "moder"))
             {
-                _context.Summaries.Remove(summary);
+                _context.Vacancies.Remove(vacancy);
                 await _context.SaveChangesAsync();
             }
-
             return RedirectToAction("PersonalPage", "Account");
         }
 
-        private bool SummaryExists(int id)
+        private bool VacancyExists(int id)
         {
-            return _context.Summaries.Any(e => e.Id == id);
+            return _context.Vacancies.Any(e => e.Id == id);
         }
     }
 }

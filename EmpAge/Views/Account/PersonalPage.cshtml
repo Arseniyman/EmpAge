@@ -5,11 +5,14 @@
 @if (User.IsInRole("applicant"))
 {
     <h1>Личный кабинет соискателя</h1>
+
     @await Html.PartialAsync("ApplicantPartial")
 }
 @if (User.IsInRole("employer"))
 {
     <h1>Личный кабинет работодателя</h1>
+
+    @await Html.PartialAsync("EmployerPartial")
 }
 @if (User.IsInRole("admin"))
 {

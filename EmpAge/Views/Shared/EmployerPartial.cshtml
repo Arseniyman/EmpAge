@@ -1,42 +1,42 @@
-﻿@model IEnumerable<EmpAge.Models.Summary>
+﻿@model IEnumerable<EmpAge.Models.Vacancy>
 @{ int recordsCounter = 1;}
 
 <div class="container">
     <div class="row">
         <div class="col-md-9">
-            <h3>Список резюме</h3>
+            <h3>Список вакансий</h3>
             @if (Model.Count() == 0)
             {
-                <h3>Нет созданных резюме</h3>
+                <h3>Нет созданных вакансий</h3>
             }
             else
             {
-                foreach (var summary in Model)
+                foreach (var vacancy in Model)
                 {
                     <div class="row mt-3">
                         <div class="col-md-5">
-                            @recordsCounter . @summary.Name
+                            @recordsCounter . @vacancy.Name
                         </div>
                         <div class="col-md-2">
-                            <form method="post" asp-controller="Summaries" asp-action="Details" asp-route-id="@summary.Id">
+                            <form method="post" asp-controller="Vacancies" asp-action="Details" asp-route-id="@vacancy.Id">
                                 <input type="submit" value="Подробнее" class="btn btn-info" />
                             </form>
                         </div>
                         <div class="col-md-2">
-                            <form method="post" asp-controller="Summaries" asp-action="Delete" asp-route-id="@summary.Id">
+                            <form method="post" asp-controller="Vacancies" asp-action="Delete" asp-route-id="@vacancy.Id">
                                 <input type="submit" value="Удалить" class="btn btn-danger" />
                             </form>
                         </div>
                     </div>
-                     recordsCounter++;
+                    recordsCounter++;
                 }
             }
         </div>
         <div class="col-md-3">
             <div class="row justify-content-center">
                 <div class="mt-2">
-                    <h3>Создание резюме</h3>
-                    <a class="btn btn-primary" asp-controller="Summaries" asp-action="Create">Создать резюме</a>
+                    <h3>Создание вакансии</h3>
+                    <a class="btn btn-primary" asp-controller="Vacancies" asp-action="Create">Создать вакансию</a>
                 </div>
             </div>
         </div>

@@ -1,4 +1,4 @@
-﻿@model IEnumerable<EmpAge.Models.Summary>
+﻿@model IEnumerable<EmpAge.Models.Vacancy>
 
 @{
     ViewData["Title"] = "Index";
@@ -25,10 +25,10 @@
                 @Html.DisplayNameFor(model => model.Location)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Education)
+                @Html.DisplayNameFor(model => model.EmploymentType)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.EmploymType)
+                @Html.DisplayNameFor(model => model.JobSector)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Description)
@@ -52,10 +52,10 @@
                 @Html.DisplayFor(modelItem => item.Location)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Education)
+                @Html.DisplayFor(modelItem => item.EmploymentType)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.EmploymType)
+                @Html.DisplayFor(modelItem => item.JobSector)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Description)
@@ -64,7 +64,7 @@
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
                 <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-                <form method="post" asp-controller="Summaries" asp-action="Delete" asp-route-id="@item.Id">
+                <form method="post" asp-controller="Vacancies" asp-action="Delete" asp-route-id="@item.Id">
                     <input type="submit" value="Удалить" class="btn btn-danger" />
                 </form>
             </td>

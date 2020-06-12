@@ -176,3 +176,9 @@ C:\Users\Home\source\repos\EmpAge\EmpAge\obj\Debug\netcoreapp3.1\Razor\Views\Sum
 C:\Users\Home\source\repos\EmpAge\EmpAge\obj\Debug\netcoreapp3.1\Razor\Views\Summaries\Index.cshtml.g.cs
 C:\Users\Home\source\repos\EmpAge\EmpAge\obj\Debug\netcoreapp3.1\Razor\Views\Shared\AdminPartial.cshtml.g.cs
 C:\Users\Home\source\repos\EmpAge\EmpAge\obj\Debug\netcoreapp3.1\Razor\Views\Moder\Create.cshtml.g.cs
+C:\Users\Home\source\repos\EmpAge\EmpAge\obj\Debug\netcoreapp3.1\Razor\Views\Vacancies\Create.cshtml.g.cs
+C:\Users\Home\source\repos\EmpAge\EmpAge\obj\Debug\netcoreapp3.1\Razor\Views\Vacancies\Delete.cshtml.g.cs
+C:\Users\Home\source\repos\EmpAge\EmpAge\obj\Debug\netcoreapp3.1\Razor\Views\Vacancies\Details.cshtml.g.cs
+C:\Users\Home\source\repos\EmpAge\EmpAge\obj\Debug\netcoreapp3.1\Razor\Views\Vacancies\Edit.cshtml.g.cs
+C:\Users\Home\source\repos\EmpAge\EmpAge\obj\Debug\netcoreapp3.1\Razor\Views\Vacancies\Index.cshtml.g.cs
+C:\Users\Home\source\repos\EmpAge\EmpAge\obj\Debug\netcoreapp3.1\Razor\Views\Shared\EmployerPartial.cshtml.g.cs
