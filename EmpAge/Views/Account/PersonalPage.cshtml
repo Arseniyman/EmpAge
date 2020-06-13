@@ -18,9 +18,11 @@
 {
     <h1>Личный кабинет администратора</h1>
 
-    @await Html.PartialAsync("AdminPartial");
+    @await Html.PartialAsync("AdminPartial")
 }
 @if (User.IsInRole("moder"))
 {
     <h1>Личный кабинет модератора</h1>
+
+    @await Html.PartialAsync("ModerPartial")
 }

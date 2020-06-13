@@ -1,0 +1,44 @@
+﻿@model IEnumerable<Microsoft.AspNetCore.Identity.IdentityUser>
+@{
+    ViewData["Title"] = "Соискатели";
+    int recordsCounter = 1;
+}
+
+<h1>Соискатели</h1>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <h3>Список соискателей</h3>
+            @if (Model.Count() == 0)
+            {
+                <h3>Соискателей нет</h3>
+            }
+            else
+            {
+                foreach (var user in Model)
+                {
+                    <div class="row mt-3">
+                        <div class="col-md-6">
+                            @recordsCounter . @user.Email
+                        </div>
+                        <div class="col-md-2">
+                            <form method="post" asp-controller="User" asp-action="Delete" asp-route-id="@user.Id">
+                                <input type="submit" value="Удалить" class="btn btn-danger" />
+                            </form>
+                        </div>
+                    </div>
+                    recordsCounter++;
+                }
+
+            }
+        </div>
+
+        <div class="col-md-4 text-center">
+            <form method="get" asp-controller="User" asp-action="IndexApplicants">
+                <input type="text" class="form-control" name="searchString" />
+                <input type="submit" value="Поиск" class="btn btn-primary mt-2" />
+            </form>
+        </div>
+    </div>
+</div>

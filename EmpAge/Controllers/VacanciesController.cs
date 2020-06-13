@@ -24,10 +24,23 @@ namespace EmpAge.Controllers
             _userManager = userManager;
         }
 
-        // GET: Vacancies
-        public async Task<IActionResult> Index()
+        [HttpGet]
+        public async Task<IActionResult> Index(string searchString)
         {
-            return View(await _context.Vacancies.ToListAsync());
+            var vacancies = await _context.Vacancies.ToListAsync();
+
+            if (String.IsNullOrEmpty(searchString))
+            {
+                return View(vacancies);
+            }
+            else
+            {
+                return View(vacancies.Where(
+                    s => s.Description.Contains(searchString) ||
+                    s.Name.Contains(searchString) ||
+                    s.Location.Contains(searchString)
+                ));
+            }
         }
 
         public async Task<IActionResult> Details(int? id)
@@ -89,7 +102,6 @@ namespace EmpAge.Controllers
         [Authorize(Roles = "employer")]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Phone,Salary,Location,EmploymentType,JobSector,Description,EmployerId")] Vacancy vacancy)
         {
-            var preVacancy = await _context.Vacancies.FindAsync(id);
             string currentUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
 
             if (id != vacancy.Id)
@@ -97,7 +109,7 @@ namespace EmpAge.Controllers
                 return NotFound();
             }
 
-            if (ModelState.IsValid && preVacancy.EmployerId == currentUserId)
+            if (ModelState.IsValid)
             {
                 try
                 {

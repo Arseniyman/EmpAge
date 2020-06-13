@@ -182,3 +182,6 @@ C:\Users\Home\source\repos\EmpAge\EmpAge\obj\Debug\netcoreapp3.1\Razor\Views\Vac
 C:\Users\Home\source\repos\EmpAge\EmpAge\obj\Debug\netcoreapp3.1\Razor\Views\Vacancies\Edit.cshtml.g.cs
 C:\Users\Home\source\repos\EmpAge\EmpAge\obj\Debug\netcoreapp3.1\Razor\Views\Vacancies\Index.cshtml.g.cs
 C:\Users\Home\source\repos\EmpAge\EmpAge\obj\Debug\netcoreapp3.1\Razor\Views\Shared\EmployerPartial.cshtml.g.cs
+C:\Users\Home\source\repos\EmpAge\EmpAge\obj\Debug\netcoreapp3.1\Razor\Views\Shared\ModerPartial.cshtml.g.cs
+C:\Users\Home\source\repos\EmpAge\EmpAge\obj\Debug\netcoreapp3.1\Razor\Views\User\IndexApplicants.cshtml.g.cs
+C:\Users\Home\source\repos\EmpAge\EmpAge\obj\Debug\netcoreapp3.1\Razor\Views\User\IndexEmployers.cshtml.g.cs

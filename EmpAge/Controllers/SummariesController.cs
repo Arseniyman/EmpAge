@@ -24,10 +24,23 @@ namespace EmpAge.Controllers
             _userManager = userManager;
         }
 
-        // GET: Summaries
-        public async Task<IActionResult> Index()
+        [HttpGet]
+        public async Task<IActionResult> Index(string searchString)
         {
-            return View(await _context.Summaries.ToListAsync());
+            var summaries = await _context.Summaries.ToListAsync();
+
+            if (String.IsNullOrEmpty(searchString))
+            {
+                return View(summaries);
+            }
+            else
+            {
+                return View(summaries.Where(
+                    s => s.Description.Contains(searchString) ||
+                    s.Name.Contains(searchString) ||
+                    s.Location.Contains(searchString)
+                ));
+            }
         }
 
         public async Task<IActionResult> Details(int? id)
@@ -89,7 +102,6 @@ namespace EmpAge.Controllers
         [Authorize(Roles = "applicant")]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Phone,Salary,Location,Education,EmploymType,Description,ApplicantId")] Summary summary)
         {
-            var preSummary = await _context.Summaries.FindAsync(id);
             string currentUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             
             if (id != summary.Id)
@@ -97,7 +109,7 @@ namespace EmpAge.Controllers
                 return NotFound();
             }
 
-            if (ModelState.IsValid && preSummary.ApplicantId == currentUserId)
+            if (ModelState.IsValid)
             {
                 try
                 {

@@ -73,7 +73,7 @@ namespace EmpAge.Models
                 IdentityResult result = await userManager.CreateAsync(emplo, password);
                 if (result.Succeeded)
                 {
-                    await userManager.AddToRoleAsync(emplo, "applicant");
+                    await userManager.AddToRoleAsync(emplo, "employer");
                 }
             }
         }
