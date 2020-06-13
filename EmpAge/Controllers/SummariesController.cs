@@ -35,10 +35,14 @@ namespace EmpAge.Controllers
             }
             else
             {
-                return View(summaries.Where(
-                    s => s.Description.Contains(searchString) ||
-                    s.Name.Contains(searchString) ||
-                    s.Location.Contains(searchString)
+                var compar = StringComparison.CurrentCultureIgnoreCase;
+
+                return View(summaries.Where(s =>
+                    s.Salary != null && s.Salary.Contains(searchString, compar) ||
+                    s.Name != null && s.Name.Contains(searchString, compar) ||
+                    s.Location != null && s.Location.Contains(searchString, compar) ||
+                    s.Description != null && s.Description.Contains(searchString, compar) ||
+                    s.EmploymType.ToString().Contains(searchString, compar)
                 ));
             }
         }

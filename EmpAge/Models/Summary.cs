@@ -23,6 +23,7 @@ namespace EmpAge.Models
         public string Education { get; set; }
         [Display(Name = "Тип занятости")]
         public EmploymentType EmploymType { get; set; }
+        [Required]
         [Display(Name = "Описание")]
         public string Description { get; set; }
         public string ApplicantId { get; set; }

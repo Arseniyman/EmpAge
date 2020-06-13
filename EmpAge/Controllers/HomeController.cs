@@ -6,21 +6,34 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using EmpAge.Models;
+using EmpAge.ViewModels;
+using Microsoft.EntityFrameworkCore;
 
 namespace EmpAge.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly AppDBContext _context;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger,
+            AppDBContext context)
         {
             _logger = logger;
+            _context = context;
+            
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            var summaries = await _context.Summaries.ToListAsync();
+            var vacancies = await _context.Vacancies.ToListAsync();
+            var sum = summaries.TakeLast(3).Reverse();
+            var vac = vacancies.TakeLast(3).Reverse();
+
+            HomeViewModel model = new HomeViewModel { Summaries = sum, Vacancies = vac };
+            
+            return View(model);
         }
 
         public IActionResult Privacy()

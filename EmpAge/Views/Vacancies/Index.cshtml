@@ -4,9 +4,11 @@
     ViewData["Title"] = "Вакансии";
 }
 
-    <h1>Вакансии</h1>
+    <div class="container">
+        <h1>Вакансии</h1>
+    </div>
 
-<div class="container">
+<div class="container mb-4">
     <div class="row">
         <div class="col-md-8 text-center">
             <form method="get" asp-controller="Vacancies" asp-action="Index">
@@ -22,65 +24,98 @@
         </div>
     </div>
 </div>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Phone)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Salary)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Location)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.EmploymentType)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.JobSector)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Description)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Phone)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Salary)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Location)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.EmploymentType)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.JobSector)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-info mb-2">Подробнее</a>
-                <form method="post" asp-controller="Vacancies" asp-action="Delete" asp-route-id="@item.Id">
-                    <input type="submit" value="Удалить" class="btn btn-danger" />
-                </form>
-            </td>
-        </tr>
+
+@if (User.IsInRole("moder"))
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Phone)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Salary)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Location)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.EmploymentType)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.JobSector)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Description)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Reverse())
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Phone)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Salary)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Location)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EmploymentType)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.JobSector)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                    <td>
+                        <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-info mb-2">Подробнее</a>
+                        <form method="post" asp-controller="Vacancies" asp-action="Delete" asp-route-id="@item.Id">
+                            <input type="submit" value="Удалить" class="btn btn-danger" />
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
 }
-    </tbody>
-</table>
+else
+{
+    <div class="container">
+        <div class="row">
+            @if (Model.Count() == 0)
+            {
+                <h3>Вакансий нет</h3>
+            }
+            else
+            {
+                foreach (var vacancy in Model.Reverse())
+                {
+                    <div class="col-md-4">
+                        <div class="jumbotron">
+                            <h3>@vacancy.Name</h3>
+                            <p class="lead">@vacancy.Location</p>
+                            <hr class="my-4" />
+                            <p>@vacancy.Description</p>
+                            <p class="lead">
+                                <a class="btn btn-info" asp-controller="Vacancies"
+                                   asp-action="Details" asp-route-id="@vacancy.Id">Подробнее</a>
+                            </p>
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+    </div>
+}

@@ -1,8 +1,66 @@
-﻿@{
+﻿@model EmpAge.ViewModels.HomeViewModel
+@{
     ViewData["Title"] = "Домашняя страница";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Добро пожаловать</h1>
-    <p>Рады вас видеть</p>
+<div class="container">
+    <h2>Новые вакансии</h2>
+</div>
+
+<div class="container">
+    <div class="row">
+        @if (Model.Vacancies.Count() == 0)
+        {
+            <h3>Вакансий нет</h3>
+        }
+        else
+        {
+            foreach (var vacancy in Model.Vacancies)
+            {
+                <div class="col-md-4">
+                    <div class="jumbotron">
+                        <h3>@vacancy.Name</h3>
+                        <p class="lead">@vacancy.Location</p>
+                        <hr class="my-4" />
+                        <p>@vacancy.Description</p>
+                        <p class="lead">
+                            <a class="btn btn-info" asp-controller="Vacancies" 
+                               asp-action="Details" asp-route-id="@vacancy.Id" >Подробнее</a>
+                        </p>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+</div>
+
+<div class="container">
+    <h2>Новые резюме</h2>
+</div>
+
+<div class="container">
+    <div class="row">
+        @if (Model.Summaries.Count() == 0)
+        {
+            <h3>Резюме нет</h3>
+        }
+        else
+        {
+            foreach (var summary in Model.Summaries)
+            {
+                <div class="col-md-4">
+                    <div class="jumbotron">
+                        <h3>@summary.Name</h3>
+                        <p class="lead">@summary.Location</p>
+                        <hr class="my-4" />
+                        <p>@summary.Description</p>
+                        <p class="lead">
+                            <a class="btn btn-info" asp-controller="Summaries"
+                               asp-action="Details" asp-route-id="@summary.Id">Подробнее</a>
+                        </p>
+                    </div>
+                </div>
+            }
+        }
+    </div>
 </div>

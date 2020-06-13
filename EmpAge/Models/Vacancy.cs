@@ -23,6 +23,7 @@ namespace EmpAge.Models
         public EmploymentType EmploymentType { get; set; }
         [Display(Name = "Область занятости")]
         public JobSector JobSector { get; set; }
+        [Required]
         [Display(Name = "Описание")]
         public string Description { get; set; }
         public string EmployerId { get; set; }
