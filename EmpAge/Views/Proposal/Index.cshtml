@@ -18,58 +18,80 @@
         </div>
     </div>
     <div class="row">
-        @foreach (var proposal in Model)
-        {
-            @if (proposal.RecipientId == User.FindFirstValue(ClaimTypes.NameIdentifier))
+        <div class="col-md-6">
+            @foreach (var proposal in Model)
             {
-                <div class="col-md-6">
+                @if (proposal.RecipientId == User.FindFirstValue(ClaimTypes.NameIdentifier))
+                {
+                    <small>@proposal.CreateTime</small>
                     <div class="row">
-                        <div class="col-md-4">
-                            <p>@proposal.CreateTime</p>
+                        <div class="col-md-8">
                             <p>@incomingCounter . @proposal.Message</p>
-                            incomingCounter++
                         </div>
+                        @{incomingCounter++;}
                         <div class="col-md-2">
                             @if (User.IsInRole("employer"))
                             {
                                 <a class="btn btn-info" asp-controller="Summaries"
-                                   asp-action="Details" asp-route-id="@proposal.RecordId"></a>
+                                   asp-action="Details" asp-route-id="@proposal.RecordId">Резюме</a>
                             }
                             else
                             {
                                 <a class="btn btn-info" asp-controller="Vacancies"
-                                   asp-action="Details" asp-route-id="@proposal.RecordId"></a>
+                                   asp-action="Details" asp-route-id="@proposal.RecordId">Вакансия</a>
                             }
-                        </div>
-                    </div>
-                </div>
-            }
-            else
-            {
-                <div class="col-md-6">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <p>@proposal.CreateTime</p>
-                            <p>@incomingCounter . @proposal.Message</p>
-                            outgoingCounter++
                         </div>
                         <div class="col-md-2">
-                            @if (User.IsInRole("employer"))
-                            {
-                                <a class="btn btn-info" asp-controller="Vacancies"
-                                    asp-action="Details" asp-route-id="@proposal.RecordId"></a>
-                            }
-                            else
-                            {
-                                <a class="btn btn-info" asp-controller="Summaries"
-                                    asp-action="Details" asp-route-id="@proposal.RecordId"></a>
-                            }
+                            <form method="post" asp-controller="Proposal"
+                                  asp-action="Delete" asp-route-id="@proposal.Id">
+                                <input type="submit" class="btn btn-danger" value="Удалить" />
+                            </form>
                         </div>
                     </div>
-                </div>
+                }
             }
-        }
-
+            @if(incomingCounter == 1)
+            {
+                <h3>Входящих предложений нет</h3>
+            }
+        </div>
+        <div class="col-md-6">
+                @foreach (var proposal in Model)
+                {
+                    @if (proposal.SenderId == User.FindFirstValue(ClaimTypes.NameIdentifier))
+                    {
+                        <small>@proposal.CreateTime</small>
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <p>@outgoingCounter . @proposal.Message</p>
+                                    @{outgoingCounter++;}
+                                </div>
+                                <div class="col-md-2">
+                                    @if (User.IsInRole("employer"))
+                                    {
+                                        <a class="btn btn-info" asp-controller="Vacancies"
+                                           asp-action="Details" asp-route-id="@proposal.RecordId">Вакансия</a>
+                                    }
+                                    else
+                                    {
+                                        <a class="btn btn-info" asp-controller="Summaries"
+                                           asp-action="Details" asp-route-id="@proposal.RecordId">Резюме</a>
+                                    }
+                                </div>
+                                <div class="col-md-2">
+                                    <form method="post" asp-controller="Proposal"
+                                          asp-action="Delete" asp-route-id="@proposal.Id">
+                                        <input type="submit" class="btn btn-danger" value="Удалить" />
+                                    </form>
+                                </div>
+                            </div>
+                    }
+                }
+                @if(outgoingCounter == 1)
+                {
+                    <h3>Исходящих предложений нет</h3>
+                }
+        </div>
     </div>
 </div>
 

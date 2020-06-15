@@ -132,5 +132,31 @@ namespace EmpAge.Controllers
 
             return View(proposals.ToList());
         }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [Authorize(Roles = "employer, applicant")]
+        public async Task<IActionResult> Delete(int? id)
+        {
+            if(id == null)
+            {
+                return NotFound();
+            }
+
+            var currentUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            var proposal = await _context.Proposals.FindAsync(id);
+
+            if(currentUserId != proposal.RecipientId && 
+                currentUserId != proposal.SenderId)
+            {
+                return NotFound();
+            }
+
+            _context.Proposals.Remove(proposal);
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction("Index", "Proposal");
+        }
     }
 }
