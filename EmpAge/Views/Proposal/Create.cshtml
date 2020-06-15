@@ -1,0 +1,55 @@
+﻿@model EmpAge.ViewModels.SendProposalViewModel
+@{
+    ViewData["Title"] = "Создание предложения";
+
+}
+
+<h1>Создание</h1>
+
+<h4>Предложения</h4>
+<hr />
+
+<div class="container">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="@Model.Proposal.RecordId" class="control-label"></label>
+                @if (User.IsInRole("employer"))
+                {
+                    var vacancies = new List<SelectListItem>();
+                    foreach (var vacancy in Model.Vacancies)
+                    {
+                        vacancies.Add(new SelectListItem
+                        {
+                            Value = vacancy.Id.ToString(),
+                            Text = vacancy.Name
+                        });
+                    }
+                    <select asp-for="@Model.Proposal.RecordId" asp-items="vacancies" class="form-control"></select>
+
+                }
+                else
+                {
+                    var summaries = new List<SelectListItem>();
+                    foreach (var summary in Model.Summaries)
+                    {
+                        summaries.Add(new SelectListItem
+                        {
+                            Value = summary.Id.ToString(),
+                            Text = summary.Name
+                        });
+                    }
+                    <select asp-for="@Model.Proposal.RecordId" asp-items="summaries" class="form-control"></select>
+                }
+                <span asp-validation-for="@Model.Proposal.RecordId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.Proposal.Message" class="control-label"></label>
+                <textarea asp-for="@Model.Proposal.Message" class="form-control"></textarea>
+                <span asp-validation-for="@Model.Proposal.Message" class="text-danger"></span>
+            </div>
+            <input type="submit" class="btn btn-primary" value="Отправить предложение" />
+        </form>
+    </div>
+</div>

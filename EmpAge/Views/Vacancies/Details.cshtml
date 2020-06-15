@@ -58,7 +58,7 @@
 <div class="container">
     <div class="row">
         @if (User.IsInRole("moder") ||
-          User.FindFirstValue(ClaimTypes.NameIdentifier) == Model.EmployerId)
+         User.FindFirstValue(ClaimTypes.NameIdentifier) == Model.EmployerId)
         {
             <form method="post" asp-controller="Vacancies" asp-action="Delete" asp-route-id="@Model.Id">
                 <input type="submit" value="Удалить" class="btn btn-danger mr-2" />
@@ -69,6 +69,11 @@
             }
 
 
+        }
+        @if (User.IsInRole("applicant"))
+        {
+            <a class="btn btn-success mr-2" asp-controller="Proposal"
+               asp-action="Create" asp-route-id="@Model.Id">Отправить предложение</a>
         }
         <a class="btn btn-primary" asp-action="Index">К общему списку</a>
     </div>

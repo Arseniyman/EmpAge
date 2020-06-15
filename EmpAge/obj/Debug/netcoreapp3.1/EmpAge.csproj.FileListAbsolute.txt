@@ -170,14 +170,12 @@ C:\Users\Home\source\repos\EmpAge\EmpAge\bin\Debug\netcoreapp3.1\runtimes\win-x6
 C:\Users\Home\source\repos\EmpAge\EmpAge\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\e_sqlite3.dll
 C:\Users\Home\source\repos\EmpAge\EmpAge\obj\Debug\netcoreapp3.1\EmpAge.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\Home\source\repos\EmpAge\EmpAge\obj\Debug\netcoreapp3.1\Razor\Views\Summaries\Create.cshtml.g.cs
-C:\Users\Home\source\repos\EmpAge\EmpAge\obj\Debug\netcoreapp3.1\Razor\Views\Summaries\Delete.cshtml.g.cs
 C:\Users\Home\source\repos\EmpAge\EmpAge\obj\Debug\netcoreapp3.1\Razor\Views\Summaries\Details.cshtml.g.cs
 C:\Users\Home\source\repos\EmpAge\EmpAge\obj\Debug\netcoreapp3.1\Razor\Views\Summaries\Edit.cshtml.g.cs
 C:\Users\Home\source\repos\EmpAge\EmpAge\obj\Debug\netcoreapp3.1\Razor\Views\Summaries\Index.cshtml.g.cs
 C:\Users\Home\source\repos\EmpAge\EmpAge\obj\Debug\netcoreapp3.1\Razor\Views\Shared\AdminPartial.cshtml.g.cs
 C:\Users\Home\source\repos\EmpAge\EmpAge\obj\Debug\netcoreapp3.1\Razor\Views\Moder\Create.cshtml.g.cs
 C:\Users\Home\source\repos\EmpAge\EmpAge\obj\Debug\netcoreapp3.1\Razor\Views\Vacancies\Create.cshtml.g.cs
-C:\Users\Home\source\repos\EmpAge\EmpAge\obj\Debug\netcoreapp3.1\Razor\Views\Vacancies\Delete.cshtml.g.cs
 C:\Users\Home\source\repos\EmpAge\EmpAge\obj\Debug\netcoreapp3.1\Razor\Views\Vacancies\Details.cshtml.g.cs
 C:\Users\Home\source\repos\EmpAge\EmpAge\obj\Debug\netcoreapp3.1\Razor\Views\Vacancies\Edit.cshtml.g.cs
 C:\Users\Home\source\repos\EmpAge\EmpAge\obj\Debug\netcoreapp3.1\Razor\Views\Vacancies\Index.cshtml.g.cs
@@ -185,3 +183,5 @@ C:\Users\Home\source\repos\EmpAge\EmpAge\obj\Debug\netcoreapp3.1\Razor\Views\Sha
 C:\Users\Home\source\repos\EmpAge\EmpAge\obj\Debug\netcoreapp3.1\Razor\Views\Shared\ModerPartial.cshtml.g.cs
 C:\Users\Home\source\repos\EmpAge\EmpAge\obj\Debug\netcoreapp3.1\Razor\Views\User\IndexApplicants.cshtml.g.cs
 C:\Users\Home\source\repos\EmpAge\EmpAge\obj\Debug\netcoreapp3.1\Razor\Views\User\IndexEmployers.cshtml.g.cs
+C:\Users\Home\source\repos\EmpAge\EmpAge\obj\Debug\netcoreapp3.1\Razor\Views\Proposal\Index.cshtml.g.cs
+C:\Users\Home\source\repos\EmpAge\EmpAge\obj\Debug\netcoreapp3.1\Razor\Views\Proposal\Create.cshtml.g.cs
