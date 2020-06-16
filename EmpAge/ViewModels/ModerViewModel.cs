@@ -8,11 +8,11 @@ namespace EmpAge.ViewModels
 {
     public class ModerViewModel
     {
-        [Required]
+        [Required(ErrorMessage = "Поле 'Email' обязательное")]
         [Display(Name = "Email")]
         public string Email { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Поле 'Пароль' обязательное")]
         [DataType(DataType.Password)]
         [Display(Name = "Пароль")]
         public string Password { get; set; }

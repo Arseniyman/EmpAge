@@ -10,7 +10,7 @@ namespace EmpAge.Models
     {
         [Key]
         public int Id { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Поле 'Название' обязательное")]
         [Display(Name = "Название")]
         public string Name { get; set; }
         [Display(Name = "Телефон")]
@@ -23,7 +23,7 @@ namespace EmpAge.Models
         public string Education { get; set; }
         [Display(Name = "Тип занятости")]
         public EmploymentType EmploymType { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Поле 'Описание' обязательное")]
         [Display(Name = "Описание")]
         public string Description { get; set; }
         public string ApplicantId { get; set; }

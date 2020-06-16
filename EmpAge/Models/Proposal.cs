@@ -17,7 +17,7 @@ namespace EmpAge.Models
         [RegularExpression(@"[1-9]", 
             ErrorMessage = "Необходимо выбрать запись")]
         public int RecordId { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Поле 'Сообщение' обязательное")]
         [Display(Name = "Сообщение")]
         public string Message { get; set; }
         public DateTime CreateTime { get; set; }
