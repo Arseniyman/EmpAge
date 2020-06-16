@@ -46,10 +46,10 @@ namespace EmpAge.Controllers
                 {
                     role = "employer";
                 }
-                var resultRole = await _userManager.AddToRoleAsync(user, role);
 
-                if (result.Succeeded && resultRole.Succeeded)
+                if (result.Succeeded)
                 {
+                    await _userManager.AddToRoleAsync(user, role);
                     await _signInManager.SignInAsync(user, false);
                     return RedirectToAction("Index", "Home");
                 }
