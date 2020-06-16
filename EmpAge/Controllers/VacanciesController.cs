@@ -9,6 +9,7 @@ using EmpAge.Models;
 using Microsoft.AspNetCore.Identity;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.Extensions.Logging;
 
 namespace EmpAge.Controllers
 {
@@ -16,12 +17,15 @@ namespace EmpAge.Controllers
     {
         private readonly AppDBContext _context;
         private readonly UserManager<IdentityUser> _userManager;
+        private readonly ILogger<VacanciesController> _logger;
 
         public VacanciesController(AppDBContext context,
-            UserManager<IdentityUser> userManager)
+            UserManager<IdentityUser> userManager,
+            ILogger<VacanciesController> logger)
         {
             _context = context;
             _userManager = userManager;
+            _logger = logger;
         }
 
         [HttpGet]
@@ -124,6 +128,10 @@ namespace EmpAge.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
+                    _logger.LogWarning("{0}, Warn, Problem with User {1} " +
+                        "try to have edit vacancy - {2}",
+                    DateTime.Now, User.Identity.Name, vacancy.Id);
+
                     if (!VacancyExists(vacancy.Id))
                     {
                         return NotFound();
@@ -150,6 +158,9 @@ namespace EmpAge.Controllers
             if(vacancy.EmployerId == currentUserId ||
                 await _userManager.IsInRoleAsync(currentUser, "moder"))
             {
+                _logger.LogInformation("{0}, Info, User {1} delete {2}`s vacancy - {3}",
+                    DateTime.Now, User.Identity.Name, vacancy.EmployerId, vacancy.Name);
+                
                 _context.Vacancies.Remove(vacancy);
                 await _context.SaveChangesAsync();
             }

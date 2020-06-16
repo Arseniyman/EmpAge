@@ -8,6 +8,7 @@ using EmpAge.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using System.Security.Claims;
 using EmpAge.Models;
+using Microsoft.Extensions.Logging;
 
 namespace EmpAge.Controllers
 {
@@ -15,9 +16,12 @@ namespace EmpAge.Controllers
     public class ModerController : Controller
     {
         private readonly UserManager<IdentityUser> _userManager;
-        public ModerController(UserManager<IdentityUser> userManager)
+        private readonly ILogger<ModerController> _logger;
+        public ModerController(UserManager<IdentityUser> userManager,
+            ILogger<ModerController> logger)
         {
             _userManager = userManager;
+            _logger = logger;
         }
 
         [HttpGet]
@@ -34,9 +38,11 @@ namespace EmpAge.Controllers
                 IdentityUser user = new IdentityUser { Email = model.Email, UserName = model.Email };
                 var result = await _userManager.CreateAsync(user, model.Password);
                 
-                
                 if (result.Succeeded)
                 {
+                    _logger.LogInformation("{0}, Info, Admin {1} create moderator {2}", 
+                        DateTime.Now, User.Identity.Name, model.Email);
+
                     var resultRole = await _userManager.AddToRoleAsync(user, "moder");
                     return RedirectToAction("PersonalPage", "Account");
                 }
@@ -55,8 +61,16 @@ namespace EmpAge.Controllers
         public async Task<IActionResult> Delete(string id)
         {
             var user = await _userManager.FindByIdAsync(id);
+            string moderEmail = user.Email;
+            
             var result = await _userManager.DeleteAsync(user);
-        
+
+            if (result.Succeeded)
+            {
+                _logger.LogInformation("{0}, Info, Admin {1} delete moderator {2}",
+                       DateTime.Now, User.Identity.Name, moderEmail);
+            }
+
             return RedirectToAction("PersonalPage", "Account");
         }
     }

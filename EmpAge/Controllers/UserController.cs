@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Authorization;
 using EmpAge.Models;
+using Microsoft.Extensions.Logging;
 
 namespace EmpAge.Controllers
 {
@@ -14,12 +15,14 @@ namespace EmpAge.Controllers
     {
         private readonly UserManager<IdentityUser> _userManager;
         private readonly AppDBContext _context;
+        private readonly ILogger<UserController> _logger;
 
         public UserController(UserManager<IdentityUser> userManager,
-            AppDBContext context)
+            AppDBContext context, ILogger<UserController> logger)
         {
             _userManager = userManager;
             _context = context;
+            _logger = logger;
         }
 
         [HttpGet]
@@ -56,11 +59,16 @@ namespace EmpAge.Controllers
         public async Task<IActionResult> Delete(string id)
         {
             var user = await _userManager.FindByIdAsync(id);
+            string userEmail = user.Email;
             bool isDelUserEmployer = await _userManager.IsInRoleAsync(user, "employer");
+
             var result =  await _userManager.DeleteAsync(user);
 
             if (result.Succeeded)
             {
+                _logger.LogInformation("{0}, Info, Moderator {1} delete {2}", 
+                    DateTime.Now, User.Identity.Name, userEmail);
+
                 if (isDelUserEmployer)
                 {
                     var delUserVacancies = _context.Vacancies.Where(v =>

@@ -9,6 +9,7 @@ using EmpAge.Models;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.Logging;
 
 namespace EmpAge.Controllers
 {
@@ -16,12 +17,15 @@ namespace EmpAge.Controllers
     {
         private readonly AppDBContext _context;
         private readonly UserManager<IdentityUser> _userManager;
+        private readonly ILogger<SummariesController> _logger;
 
         public SummariesController(AppDBContext context,
-            UserManager<IdentityUser> userManager)
+            UserManager<IdentityUser> userManager,
+            ILogger<SummariesController> logger)
         {
             _context = context;
             _userManager = userManager;
+            _logger = logger;
         }
 
         [HttpGet]
@@ -124,6 +128,10 @@ namespace EmpAge.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
+                    _logger.LogWarning("{0}, Warn, Problem with User {1} " +
+                        "try to have edit summary - {2}",
+                    DateTime.Now, User.Identity.Name, summary.Id);
+
                     if (!SummaryExists(summary.Id))
                     {
                         return NotFound();
@@ -150,6 +158,9 @@ namespace EmpAge.Controllers
             if (summary.ApplicantId == currentUserId || 
                 await _userManager.IsInRoleAsync(currentUser, "moder"))
             {
+                _logger.LogInformation("{0}, Info, User {1} delete {2}`s summary - {3}",
+                    DateTime.Now, User.Identity.Name, summary.ApplicantId, summary.Name);
+
                 _context.Summaries.Remove(summary);
                 await _context.SaveChangesAsync();
             }

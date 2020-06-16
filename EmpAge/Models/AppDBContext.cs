@@ -5,6 +5,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using EmpAge.Controllers;
+using Microsoft.Extensions.Logging;
+using System.IO;
 
 namespace EmpAge.Models
 {
@@ -19,5 +22,17 @@ namespace EmpAge.Models
         {
             Database.EnsureCreated();
         }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseLoggerFactory(LogFactory);
+        }
+
+        public static readonly ILoggerFactory LogFactory = LoggerFactory.Create(builder =>
+        {
+            builder.AddFilter((category, level) =>
+                category == DbLoggerCategory.Database.Command.Name)
+            .AddProvider(new FileLoggerProvider(Path.Combine(Directory.GetCurrentDirectory(), "DBlogger.txt")));
+        });
     }
 }

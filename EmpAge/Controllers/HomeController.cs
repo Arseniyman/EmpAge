@@ -13,13 +13,10 @@ namespace EmpAge.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
         private readonly AppDBContext _context;
 
-        public HomeController(ILogger<HomeController> logger,
-            AppDBContext context)
+        public HomeController(AppDBContext context)
         {
-            _logger = logger;
             _context = context;
             
         }
