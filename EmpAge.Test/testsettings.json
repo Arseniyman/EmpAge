@@ -1,0 +1,7 @@
+{
+  "ConnectionStrings": {
+    "DefaultConnection": "Server=(localdb)\\mssqllocaldb;Database=usersemptest;Trusted_Connection=True;"
+
+  },
+  "AllowedHosts": "*"
+}

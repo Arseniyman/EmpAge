@@ -2,6 +2,58 @@
   "version": 3,
   "targets": {
     ".NETCoreApp,Version=v3.1": {
+      "LivingDocumentation.Abstractions/0.3.11": {
+        "type": "package",
+        "dependencies": {
+          "NETStandard.Library": "1.6.1",
+          "Newtonsoft.Json": "9.0.1"
+        },
+        "compile": {
+          "lib/netstandard1.0/LivingDocumentation.Abstractions.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.0/LivingDocumentation.Abstractions.dll": {}
+        }
+      },
+      "LivingDocumentation.Descriptions/0.3.11": {
+        "type": "package",
+        "dependencies": {
+          "LivingDocumentation.Abstractions": "0.3.11",
+          "LivingDocumentation.Extensions": "0.3.11"
+        },
+        "compile": {
+          "lib/netstandard2.0/LivingDocumentation.Descriptions.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/LivingDocumentation.Descriptions.dll": {}
+        }
+      },
+      "LivingDocumentation.Extensions/0.3.11": {
+        "type": "package",
+        "dependencies": {
+          "LivingDocumentation.Abstractions": "0.3.11",
+          "NETStandard.Library": "1.6.1"
+        },
+        "compile": {
+          "lib/netstandard1.0/LivingDocumentation.Extensions.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.0/LivingDocumentation.Extensions.dll": {}
+        }
+      },
+      "LivingDocumentation.UML/0.3.11": {
+        "type": "package",
+        "dependencies": {
+          "LivingDocumentation.Descriptions": "0.3.11",
+          "LivingDocumentation.Extensions": "0.3.11"
+        },
+        "compile": {
+          "lib/netstandard2.0/LivingDocumentation.UML.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/LivingDocumentation.UML.dll": {}
+        }
+      },
       "Microsoft.AspNetCore.Cryptography.Internal/3.1.5": {
         "type": "package",
         "compile": {
@@ -2744,6 +2796,54 @@
     }
   },
   "libraries": {
+    "LivingDocumentation.Abstractions/0.3.11": {
+      "sha512": "rCYEZdWK0tSu2vjSon3OhlCJ4BNuJaDQOcRqJlnuk1rIxK3GxrzM00m3iHXy3+141UD6aRwcPR+XW/BPAnmMuw==",
+      "type": "package",
+      "path": "livingdocumentation.abstractions/0.3.11",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netstandard1.0/LivingDocumentation.Abstractions.dll",
+        "livingdocumentation.abstractions.0.3.11.nupkg.sha512",
+        "livingdocumentation.abstractions.nuspec"
+      ]
+    },
+    "LivingDocumentation.Descriptions/0.3.11": {
+      "sha512": "7Ute4pU8qX8nql/JijE7IKu+3DGnTit/U7zEqpizG5nC+MCI20/r2106DkCmAX4hizs7a8QxAQ7WMImoxBGCpQ==",
+      "type": "package",
+      "path": "livingdocumentation.descriptions/0.3.11",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netstandard2.0/LivingDocumentation.Descriptions.dll",
+        "livingdocumentation.descriptions.0.3.11.nupkg.sha512",
+        "livingdocumentation.descriptions.nuspec"
+      ]
+    },
+    "LivingDocumentation.Extensions/0.3.11": {
+      "sha512": "xPqd3lzBu0bbQLCVjIjn/AGgnmRodRg2dmTviYAca3P4TAeVH1YchxJL0zCbb5KVtx1sJrlDwq/4vKQDt4LnPA==",
+      "type": "package",
+      "path": "livingdocumentation.extensions/0.3.11",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netstandard1.0/LivingDocumentation.Extensions.dll",
+        "livingdocumentation.extensions.0.3.11.nupkg.sha512",
+        "livingdocumentation.extensions.nuspec"
+      ]
+    },
+    "LivingDocumentation.UML/0.3.11": {
+      "sha512": "emR6005kIAOS6V9R64XWovFoWbONOQ+6D4nhNoCvnWkr29Zthr1uxNTPeUJuSnivCvbTaFLtzX+ZpnmiBh3o3w==",
+      "type": "package",
+      "path": "livingdocumentation.uml/0.3.11",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netstandard2.0/LivingDocumentation.UML.dll",
+        "livingdocumentation.uml.0.3.11.nupkg.sha512",
+        "livingdocumentation.uml.nuspec"
+      ]
+    },
     "Microsoft.AspNetCore.Cryptography.Internal/3.1.5": {
       "sha512": "oLOay0PH+b0x9mTAFAZswlDuoZYOO2Is6eeDoN8pzx31zzpNL2RvEY343s8yaTVEzydymRduTyff4htRJgt6IA==",
       "type": "package",
@@ -8648,6 +8748,7 @@
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
+      "LivingDocumentation.UML >= 0.3.11",
       "Microsoft.AspNetCore.Identity.EntityFrameworkCore >= 3.1.5",
       "Microsoft.EntityFrameworkCore >= 3.1.5",
       "Microsoft.EntityFrameworkCore.SqlServer >= 3.1.5",
@@ -8697,6 +8798,10 @@
     "frameworks": {
       "netcoreapp3.1": {
         "dependencies": {
+          "LivingDocumentation.UML": {
+            "target": "Package",
+            "version": "[0.3.11, )"
+          },
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
             "target": "Package",
             "version": "[3.1.5, )"

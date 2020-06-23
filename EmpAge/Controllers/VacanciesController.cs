@@ -48,7 +48,7 @@ namespace EmpAge.Controllers
                     v.Salary != null && v.Salary.Contains(searchString, compar) ||
                     v.JobSector.ToString().Contains(searchString, compar) ||
                     v.EmploymentType.ToString().Contains(searchString, compar)
-                ).Reverse());
+                ).ToList());
             }
         }
 

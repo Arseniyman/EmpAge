@@ -5,6 +5,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Mocks\**" />
+    <Content Remove="Mocks\**" />
+    <EmbeddedResource Remove="Mocks\**" />
+    <None Remove="Mocks\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Remove="Migrations\20200610121154_AdddVacancySummaryModel.cs" />
     <Compile Remove="Migrations\20200610121154_AdddVacancySummaryModel.Designer.cs" />
     <Compile Remove="Migrations\20200610122924_ModelsVacSum.cs" />
@@ -12,6 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="LivingDocumentation.UML" Version="0.3.11" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.5" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.5" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="3.1.4" />

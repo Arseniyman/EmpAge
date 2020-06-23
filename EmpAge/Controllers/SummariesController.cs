@@ -47,7 +47,7 @@ namespace EmpAge.Controllers
                     s.Location != null && s.Location.Contains(searchString, compar) ||
                     s.Description != null && s.Description.Contains(searchString, compar) ||
                     s.EmploymType.ToString().Contains(searchString, compar)
-                ));
+                ).ToList());
             }
         }
 

@@ -522,7 +522,6 @@ C:\Users\Home\source\EmpAge\EmpAge\bin\Debug\netcoreapp3.1\runtimes\win\lib\nets
 C:\Users\Home\source\EmpAge\EmpAge\obj\Debug\netcoreapp3.1\EmpAge.csprojAssemblyReference.cache
 C:\Users\Home\source\EmpAge\EmpAge\obj\Debug\netcoreapp3.1\staticwebassets\EmpAge.StaticWebAssets.Manifest.cache
 C:\Users\Home\source\EmpAge\EmpAge\obj\Debug\netcoreapp3.1\staticwebassets\EmpAge.StaticWebAssets.xml
-C:\Users\Home\source\EmpAge\EmpAge\obj\Debug\netcoreapp3.1\EmpAge.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\Home\source\EmpAge\EmpAge\obj\Debug\netcoreapp3.1\EmpAge.RazorAssemblyInfo.cache
 C:\Users\Home\source\EmpAge\EmpAge\obj\Debug\netcoreapp3.1\EmpAge.RazorAssemblyInfo.cs
 C:\Users\Home\source\EmpAge\EmpAge\obj\Debug\netcoreapp3.1\EmpAge.AssemblyInfoInputs.cache
@@ -565,3 +564,8 @@ C:\Users\Home\source\EmpAge\EmpAge\obj\Debug\netcoreapp3.1\EmpAge.Views.pdb
 C:\Users\Home\source\EmpAge\EmpAge\obj\Debug\netcoreapp3.1\EmpAge.csproj.CopyComplete
 C:\Users\Home\source\EmpAge\EmpAge\obj\Debug\netcoreapp3.1\EmpAge.dll
 C:\Users\Home\source\EmpAge\EmpAge\obj\Debug\netcoreapp3.1\EmpAge.pdb
+C:\Users\Home\source\EmpAge\EmpAge\bin\Debug\netcoreapp3.1\LivingDocumentation.Abstractions.dll
+C:\Users\Home\source\EmpAge\EmpAge\bin\Debug\netcoreapp3.1\LivingDocumentation.Descriptions.dll
+C:\Users\Home\source\EmpAge\EmpAge\bin\Debug\netcoreapp3.1\LivingDocumentation.Extensions.dll
+C:\Users\Home\source\EmpAge\EmpAge\bin\Debug\netcoreapp3.1\LivingDocumentation.UML.dll
+C:\Users\Home\source\EmpAge\EmpAge\obj\Debug\netcoreapp3.1\EmpAge.MvcApplicationPartsAssemblyInfo.cache
