@@ -48,8 +48,7 @@ namespace EmpAge.Test.Controllers
             string description)
             => MyMvc
             .Controller<VacanciesController>()
-            .WithUser(user => user
-                .WithUsername("emplo@mail.ru"))
+            .WithUser("emplo@mail.ru", new[] { "employer" })
             .Calling(c => c.Create(new Vacancy
             {
                 Name = name,

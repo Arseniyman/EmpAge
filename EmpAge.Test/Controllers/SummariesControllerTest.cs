@@ -41,14 +41,6 @@ namespace EmpAge.Test.Controllers
             .View(result => result
                 .WithModelOfType<Summary>());
 
-        /*[Fact]
-        public void PostCreate()
-            => MyMvc
-            .Controller<SummariesController>()
-            .WithUser("emplo@mail.ru", new[] { "employer" })
-            .Calling(c => c.Create())
-            .ShouldReturn();*/
-
         [Theory]
         [InlineData("Simple name", "Simple description")]
         public void PostCreateShouldReturnRedirectPersonalPageAccountAndSaveSummary(
